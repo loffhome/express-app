@@ -1,24 +1,15 @@
 var express = require("express");
 var app = express();
 
+var userRouter=require("./user");
+
+
 
 app.get("/", function(req, res){
 	res.send("Comienza APP");
 });
 
-app.get("/createuser", function(req, res){
-	console.log(req);
-	res.send("Crear Usuario ");
-});
-
-
-app.get("/deleteuser", function(req, res){
-	res.send("Borrar Usuario");
-});
-
-app.get("/updateuser", function(req, res){
-	res.send("Modificar usuario");
-});
+app.use("/users", userRouter);
 
 
 var server=app.listen(3000, function(){
